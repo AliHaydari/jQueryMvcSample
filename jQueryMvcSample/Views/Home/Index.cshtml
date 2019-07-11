@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>نمايش اطلاعات به صورت همزمان و غيرهمزمان</h1>
+    <p class="lead">jQueryMvcSample</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Show Synchronous</h2>
+        <p>@Html.ActionLink(linkText: "نمايش همزمان", actionName: "ShowSynchronous", controllerName: "Home")</p>
+    </div>
+    <div class="col-md-4">
+        <h2>Show Asynchronous</h2>
+        <p>@Html.ActionLink(linkText: "نمايش غير همزمان", actionName: "ShowAsynchronous", controllerName: "Home")</p>
+    </div>
+    <div class="col-md-4">
+
+    </div>
+</div>

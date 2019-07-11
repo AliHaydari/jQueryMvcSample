@@ -1,0 +1,38 @@
+﻿@{
+    ViewBag.Title = "ShowAsynchronous";
+    var loadInfoUrl = Url.Action(actionName: "RenderAsynchronous", controllerName: "Home");
+}
+<h2>
+    نمايش غير همزمان
+</h2>
+<div id="info" align="center">
+</div>
+<div id="progress" align="center" style="display: none">
+    <br />
+    <img src="@Url.Content("~/Content/images/loadingAnimation.gif")" alt="loading..." />
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+        $(function () {
+            $("#progress").css("display", "block");
+            $.ajax({
+                type: "POST",
+                url: '@loadInfoUrl',
+                complete: function (xhr, status) {
+                    var data = xhr.responseText;
+                    if (xhr.status == 403) {
+                        window.location = "/login";
+                    }
+                    else if (status === 'error' || !data || data == "nok") {
+                        alert('خطايي رخ داده است');
+                    }
+                    else {
+                        $("#progress").css("display", "none");
+                        $("#info").html(data);
+                    }
+                }
+            });
+        });
+    </script>
+}
